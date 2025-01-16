@@ -67,15 +67,34 @@ function generateColors(concept) {
             break;
     }
 
-    console.log("Nouveau color set");
+    console.log("Nouveau set")
     while (colors.length < 4) {
         let newColor = random(colorSet);
+        let isContrasting = true;
+
         if (!colors.includes(newColor)) {
-            colors.push(newColor);
+                if(colors.length >= 1) {
+                    if(!hasContrast(colors[colors.length-1], newColor)) {
+                        isContrasting = false;
+                    }
+                }
+                    
+            if(isContrasting) {
+                colors.push(newColor);
+            }
         }
     }
 
     return colors;
+}
+
+function hasContrast(color1, color2) {
+    let brightness1 = brightness(color1);
+    let brightness2 = brightness(color2);
+
+    console.log(abs(brightness1 - brightness2))
+    console.log(abs(brightness1 - brightness2) < 5)
+    return abs(brightness1 - brightness2) > 12; // Ajustez cette valeur pour le niveau de contraste souhaité
 }
 
 function drawColorSets() {
@@ -86,6 +105,9 @@ function drawColorSets() {
     let x = startX;
     drawConcept(selectedConcept, startX);
     for (let i = 0; i < colorSets.length; i++) {
+        stroke(0);
+        strokeWeight(3);
+        rect(x, 100, 160, 200);
         drawColorSet(colorSets[i].colors, x, 100);
         drawColorSetDetails(colorSets[i].colors, x, 350);
         x += setWidth + 75; // Espace entre chaque ensemble de couleurs
@@ -96,13 +118,14 @@ function drawConcept(concept, x) {
     fill(51);
     textSize(32);
     textStyle(BOLD);
-    textFont('Times New Roman');
+    textFont('Verdana');
     text(`Concept: ${concept}`, x, 50);
 }
 
 function drawColorSet(colors, x, y) {
     for (let i = 0; i < colors.length; i++) {
         fill(color(colors[i]));
+        noStroke();
         rect(x + i * 40, y, 40, 200);
     }
 }
@@ -110,10 +133,14 @@ function drawColorSet(colors, x, y) {
 function drawColorSetDetails(colors, x, y) {
     for (let i = 0; i < colors.length; i++) {
         fill(color(colors[i]));
+        stroke(0);
+        strokeWeight(1);
         rect(x, y + i * 45, 40, 40);
         fill(51);
+        noStroke();
         textSize(24);
-        textFont('Times New Roman');
+        textStyle(NORMAL);
+        textFont('Verdana');
         text(colors[i], x + 50, (y + 28) + i * 45)
     }
 }
