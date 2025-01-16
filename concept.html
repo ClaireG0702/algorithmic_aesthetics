@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Couleurs</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" />
+</head>
+<header>
+    <p>
+        <a style="color: #fff; text-decoration: none;" href="index.html">Color Generator</a>
+    </p>
+</header>
+<body>
+
+    <h1>Switch concept</h1>
+    
+    <div class="concept-buttons">
+        <button class="concept-button" style="background-color: #a5c8e6;" onclick="filterColors('cold')">COLD</button>
+        <button class="concept-button" style="background-color: #f7c7d2;" onclick="filterColors('sugary')">SUGARY</button>
+        <button class="concept-button" style="background-color: #fff066;" onclick="filterColors('acid')">ACID</button>
+    </div>
+    
+    <div class="scroll-container">
+        <div class="scroll">
+            <script src="sketch.js"></script>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Create harmonious palettes based on your ideas.</p>
+    </div>
+
+</body>
+</html>

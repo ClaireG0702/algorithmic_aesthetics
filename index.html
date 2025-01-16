@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Couleurs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" />
+</head>
+<header>
+    <p>Color Generator</p>
+</header>
+<body>
+
+    <h1>The color generator made for you!</h1>
+    <h2>Choose a concept and discover the color sets offered by our color generator !</h2>
+    
+    <div class="concept-buttons">
+        <button class="concept-button" style="background-color: #a5c8e6;" onclick="redirect('cold')">COLD</button>
+        <button class="concept-button" style="background-color: #f7c7d2;" onclick="redirect('sugary')">SUGARY</button>
+        <button class="concept-button" style="background-color: #fff066;" onclick="redirect('acid')">ACID</button>
+    </div>
+    
+    <div class="scroll-container">
+        <div class="scroll">
+            <!-- Carrés de couleurs -->
+            <div class="color-box" style="background-color: #03045e;"></div>
+            <div class="color-box" style="background-color: #3c1642;"></div>
+            <div class="color-box" style="background-color: #fcf6bd;"></div>
+            <div class="color-box" style="background-color: #1b4965;"></div>
+            <div class="color-box" style="background-color: #5dd39e;"></div>
+            <div class="color-box" style="background-color: #f5e960;"></div>
+            <div class="color-box" style="background-color: #dbc2cf;"></div>
+            <div class="color-box" style="background-color: #525174;"></div>
+            <div class="color-box" style="background-color: #00f5d4;"></div>
+            <div class="color-box" style="background-color: #c490d1;"></div>
+            
+            <!-- Répétition des carrés pour assurer un défilement continu -->
+            <div class="color-box" style="background-color: #03045e;"></div>
+            <div class="color-box" style="background-color: #3c1642;"></div>
+            <div class="color-box" style="background-color: #fcf6bd;"></div>
+            <div class="color-box" style="background-color: #1b4965;"></div>
+            <div class="color-box" style="background-color: #5dd39e;"></div>
+            <div class="color-box" style="background-color: #f5e960;"></div>
+            <div class="color-box" style="background-color: #dbc2cf;"></div>
+            <div class="color-box" style="background-color: #525174;"></div>
+            <div class="color-box" style="background-color: #00f5d4;"></div>
+            <div class="color-box" style="background-color: #c490d1;"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Create harmonious palettes based on your ideas.</p>
+    </div>
+
+    <script>
+        function redirect(concept) {
+            window.location.href = `concept.html?concept=${encodeURIComponent(concept)}`;
+        }
+    </script>
+</body>
+</html>
