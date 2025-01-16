@@ -67,20 +67,20 @@ function generateColors(concept) {
             break;
     }
 
-    console.log("Nouveau set")
+    let attempts = 0;
     while (colors.length < 4) {
         let newColor = random(colorSet);
         let isContrasting = true;
 
         if (!colors.includes(newColor)) {
                 if(colors.length >= 1) {
-                    if(!hasContrast(colors[colors.length-1], newColor)) {
+                    if(!hasContrast(colors[colors.length-1], newColor) || attempts > 20) {
                         isContrasting = false;
                     }
                 }
                     
             if(isContrasting) {
-                colors.push(newColor);
+                colors.push(color(newColor));
             }
         }
     }
@@ -92,8 +92,6 @@ function hasContrast(color1, color2) {
     let brightness1 = brightness(color1);
     let brightness2 = brightness(color2);
 
-    console.log(abs(brightness1 - brightness2))
-    console.log(abs(brightness1 - brightness2) < 5)
     return abs(brightness1 - brightness2) > 12; // Ajustez cette valeur pour le niveau de contraste souhaité
 }
 
@@ -124,7 +122,7 @@ function drawConcept(concept, x) {
 
 function drawColorSet(colors, x, y) {
     for (let i = 0; i < colors.length; i++) {
-        fill(color(colors[i]));
+        fill(colors[i]);
         noStroke();
         rect(x + i * 40, y, 40, 200);
     }
@@ -132,16 +130,19 @@ function drawColorSet(colors, x, y) {
 
 function drawColorSetDetails(colors, x, y) {
     for (let i = 0; i < colors.length; i++) {
-        fill(color(colors[i]));
+        fill(colors[i]);
         stroke(0);
         strokeWeight(1);
         rect(x, y + i * 45, 40, 40);
+
+        let hexColor = '#' + hex(red(colors[i]), 2) + hex(green(colors[i]), 2) + hex(blue(colors[i]), 2);
+
         fill(51);
         noStroke();
         textSize(24);
         textStyle(NORMAL);
         textFont('Verdana');
-        text(colors[i], x + 50, (y + 28) + i * 45)
+        text(hexColor, x + 50, (y + 28) + i * 45)
     }
 }
 
@@ -149,9 +150,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const params = new URLSearchParams(window.location.search);
     const concept = params.get('concept');
 
-    if (concept) {
+    if (concept && ['cold', 'sugary', 'acid'].includes(concept)) {
         filterColors(concept);
+    } else {
+        console.error('Invalid concept parameter.');
     }
+    
 });
 
 function filterColors(concept) {
