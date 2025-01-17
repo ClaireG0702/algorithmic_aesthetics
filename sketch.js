@@ -138,8 +138,10 @@ function hasContrast(color1, color2) {
 }
 
 function drawColorSets() {
-    let setWidth = 4 * 40; // Largeur d'un set (4 rectangles)
-    let totalWidth = colorSets.length * setWidth + (colorSets.length - 1) * 75; // Largeur totale avec espaces entre les sets
+    console.log(width);
+    let setWidth = min(160, width / (colorSets.length+2)); // Largeur d'un set (4 rectangles), ajustée pour la réactivité
+    let rectWidth = setWidth / 4; // Largeur d'un rectangle dans le set
+    let totalWidth = colorSets.length * setWidth + (colorSets.length - 1) * (setWidth / 4); // Largeur totale avec espaces entre les sets
     let startX = (width - totalWidth) / 2; // Calcul de la position de départ pour centrer
 
     let x = startX;
@@ -147,10 +149,10 @@ function drawColorSets() {
     for (let i = 0; i < colorSets.length; i++) {
         stroke(0);
         strokeWeight(3);
-        rect(x, 100, 160, 200);
-        drawColorSet(colorSets[i].colors, x, 100);
+        rect(x, 100, setWidth, 200);
+        drawColorSet(colorSets[i].colors, x, 100, rectWidth);
         drawColorSetDetails(colorSets[i].colors, x, 350);
-        x += setWidth + 75; // Espace entre chaque ensemble de couleurs
+        x += setWidth + (setWidth / 4); // Espace entre chaque ensemble de couleurs
     }
 }
 
@@ -166,11 +168,11 @@ function drawConcept(concept1, concept2, x) {
     }
 }
 
-function drawColorSet(colors, x, y) {
+function drawColorSet(colors, x, y, rectWidth) {
     for (let i = 0; i < colors.length; i++) {
         fill(colors[i]);
         noStroke();
-        rect(x + i * 40, y, 40, 200);
+        rect(x + i * rectWidth, y, rectWidth, 200);
     }
 }
 
