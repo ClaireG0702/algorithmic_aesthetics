@@ -55,7 +55,9 @@
 
     <script>
         function redirect(concept) {
-            window.location.href = `concept.html?concept=${encodeURIComponent(concept)}`;
+            localStorage.setItem('selectedConcept1', concept);
+            localStorage.setItem('selectedConcept2', null);
+            window.location.href = 'concept.html';
         }
     </script>
 </body>

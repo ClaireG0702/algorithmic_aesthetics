@@ -16,12 +16,13 @@
 </header>
 <body>
 
-    <h1>Changes concept or reloads current one !</h1>
+    <h1>Change concept or reload current one !</h1>
     
     <div class="concept-buttons">
-        <button class="concept-button" onclick="filterColors('cold')">COLD</button>
-        <button class="concept-button" onclick="filterColors('sugary')">SUGARY</button>
-        <button class="concept-button" onclick="filterColors('acid')">ACID</button>
+        <button class="concept-button" id="cold" onclick="filterColors('cold')">COLD</button>
+        <button class="concept-button" id="sugary" onclick="filterColors('sugary')">SUGARY</button>
+        <button class="concept-button" id="acid" onclick="filterColors('acid')">ACID</button>
+        <button class="concept-button" style="margin-left: 5%;" onclick="reload()">Reload</button>
     </div>
     
     <div class="scroll-container">
