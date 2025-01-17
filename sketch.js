@@ -160,9 +160,9 @@ function drawConcept(concept1, concept2, x) {
     textStyle(BOLD);
     textFont('Verdana');
     if(concept2 !== "null"){
-        text(`Concept: ${concept1} and ${concept2}`, x, 50);
+        text(`${concept1.charAt(0).toUpperCase()+concept1.slice(1)} and ${concept2.charAt(0).toUpperCase()+concept2.slice(1)}`, x, 50);
     } else {
-        text(`Concept: ${concept1}`, x, 50);
+        text(`${concept1.charAt(0).toUpperCase()+concept1.slice(1)}`, x, 50);
     }
 }
 
@@ -179,16 +179,16 @@ function drawColorSetDetails(colors, x, y) {
         fill(colors[i]);
         stroke(0);
         strokeWeight(1);
-        rect(x, y + i * 45, 40, 40);
+        rect(x+15, y + i * 45, 25, 25);
 
         let hexColor = '#' + hex(red(colors[i]), 2) + hex(green(colors[i]), 2) + hex(blue(colors[i]), 2);
 
         fill(51);
         noStroke();
-        textSize(24);
+        textSize(16);
         textStyle(NORMAL);
         textFont('Verdana');
-        text(hexColor, x + 50, (y + 28) + i * 45)
+        text(hexColor, x + 55, (y + 20) + i * 45)
     }
 }
 
