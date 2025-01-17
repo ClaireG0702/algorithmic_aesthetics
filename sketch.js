@@ -32,7 +32,8 @@ let buttonSugary = document.getElementById('sugary');
 let buttonAcid = document.getElementById('acid');
 
 function setup() {
-    createCanvas(window.screen.width, 600);
+    let canva = createCanvas(window.screen.width, 600);
+    canva.parent('canva-container');
     noLoop();
 }
 

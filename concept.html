@@ -16,7 +16,7 @@
 </header>
 <body>
 
-    <h1>Change concept or reload current one !</h1>
+    <h1 class="title">Change concept or reload current one !</h1>
     
     <div class="concept-buttons">
         <button class="concept-button" id="cold" onclick="filterColors('cold')">COLD</button>
@@ -25,13 +25,11 @@
         <button class="concept-button" style="margin-left: 5%;" onclick="reload()">Reload</button>
     </div>
     
-    <div class="scroll-container">
-        <div class="scroll">
-            <script src="sketch.js"></script>
-        </div>
+    <div id="canva-container">
+        <script src="sketch.js"></script>
     </div>
 
-    <div class="footer">
+    <div class="relative-footer">
         <p>Create harmonious palettes based on your ideas.</p>
     </div>
 
